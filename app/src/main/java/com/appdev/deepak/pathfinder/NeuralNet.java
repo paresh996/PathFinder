@@ -41,19 +41,11 @@ public class NeuralNet {
         );
 
         try {
-            if(file.createNewFile()){
-                network = new KNN();
-            }else{
-                fis = new FileInputStream(file);
-                ois = new ObjectInputStream(fis);
-                network = (KNN)ois.readObject();
-                ois.close();
-            }
+            file.createNewFile();
         } catch (IOException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         }
+        network = new KNN();
 
     }
     public static NeuralNet getInstance(){
